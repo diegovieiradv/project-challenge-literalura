@@ -195,4 +195,38 @@ public class BibliotecaService {
         }
     }
 
+    public void buscarAutorPorNome() {
+        System.out.print("Digite o nome do autor: ");
+        String nome = scanner.nextLine();
+
+        Autor autor = autorRepo.findByNomeIgnoreCase(nome);
+
+        if (autor == null) {
+            System.out.println("Autor não encontrado.");
+            return;
+        }
+
+        System.out.println("--------------------------");
+        System.out.println("Autor: " + autor.getNome());
+        System.out.println("Nascimento: " + autor.getAnoNascimento());
+        System.out.println("Falecimento: " + autor.getAnoFalecimento());
+
+        if (autor.getLivros() == null || autor.getLivros().isEmpty()) {
+            System.out.println("Livros: []");
+        } else {
+            System.out.print("Livros: [ ");
+
+            for (int i = 0; i < autor.getLivros().size(); i++) {
+                System.out.print(autor.getLivros().get(i).getTitulo());
+
+                if (i < autor.getLivros().size() - 1) {
+                    System.out.print(", ");
+                }
+            }
+            System.out.println(" ]");
+        }
+
+        System.out.println("--------------------------");
+    }
+
 }

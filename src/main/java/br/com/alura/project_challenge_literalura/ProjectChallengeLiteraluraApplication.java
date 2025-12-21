@@ -34,6 +34,7 @@ public class ProjectChallengeLiteraluraApplication implements CommandLineRunner 
             System.out.println("3 - Listar autores cadastrados");
             System.out.println("4 - Listar autores vivos em um determinado ano");
             System.out.println("5 - Listar livros por idioma");
+            System.out.println("6 - Buscar autor pelo nome");
             System.out.println("0 - Sair");
 
             String entrada = scanner.nextLine();
@@ -52,6 +53,7 @@ public class ProjectChallengeLiteraluraApplication implements CommandLineRunner 
                 case 3 -> bibliotecaService.listarAutores();
                 case 4 -> bibliotecaService.listarAutoresVivos();
                 case 5 -> bibliotecaService.listarLivrosPorIdioma();
+                case 6 -> bibliotecaService.buscarAutorPorNome();
                 case 0 -> {
                     System.out.println("Saindo...");
                     rodando = false;
