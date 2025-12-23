@@ -248,7 +248,7 @@ public class BibliotecaService {
 
         System.out.println("\n--- TOP 10 LIVROS MAIS BAIXADOS ---");
 
-        int posicao = 1;
+        int i = 1;
         for (Livro livro : livros) {
             System.out.println("""
         %dº lugar
@@ -258,13 +258,13 @@ public class BibliotecaService {
         Downloads: %d
         -------------------------
         """.formatted(
-                    posicao,
+                    i,
                     livro.getTitulo(),
                     livro.getAutor().getNome(),
                     livro.getIdioma(),
                     livro.getDownloads()
             ));
-            posicao++;
+            i++;
         }
     }
 }
