@@ -57,7 +57,6 @@ public class GutendexApi {
                 );
             }
 
-            // Livro do MODEL
             return new Livro(
                     livroApi.getTitle(),
                     autor,

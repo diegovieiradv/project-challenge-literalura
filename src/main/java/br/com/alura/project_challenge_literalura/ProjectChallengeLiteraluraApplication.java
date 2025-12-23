@@ -58,6 +58,7 @@ public class ProjectChallengeLiteraluraApplication implements CommandLineRunner 
                 case 7 -> bibliotecaService.top10LivrosMaisBaixados();
                 case 0 -> {
                     System.out.println("Saindo...");
+                    System.out.println("Até mais...");
                     rodando = false;
                 }
                 default -> System.out.println("Opção inválida!");

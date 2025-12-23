@@ -11,7 +11,6 @@ public class Menu {
     private final Scanner scanner = new Scanner(System.in);
     private final BibliotecaService service;
 
-    // Injeção via construtor
     public Menu(BibliotecaService service) {
         this.service = service;
     }
