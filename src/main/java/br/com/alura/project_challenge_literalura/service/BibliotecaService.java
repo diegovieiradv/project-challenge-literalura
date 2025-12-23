@@ -27,42 +27,48 @@ public class BibliotecaService {
 
         Livro livro = gutendexApi.buscarLivro(titulo);
 
-        if (livro != null) {
-            System.out.println("Livro encontrado:");
-            System.out.println("""
-              ------- LIVRO -------
-              Título: %s
-              Autor: %s
-              Idioma: %s
-              Numero de downloads: %s
-              ---------------------  
-            """.formatted(
-                    livro.getTitulo(),
-                    livro.getAutor().getNome(),
-                    livro.getIdioma(),
-                    livro.getDownloads()
-            ));
-
-            Autor autorExistente = autorRepo.findByNome(livro.getAutor().getNome());
-            if (autorExistente == null) {
-                autorExistente = autorRepo.save(livro.getAutor());
-            }
-
-            Livro livroSalvar = new Livro(
-                    livro.getTitulo(),
-                    autorExistente,
-                    livro.getIdioma(),
-                    livro.getDownloads()
-            );
-
-            livroRepo.save(livroSalvar);
-            return livroSalvar;
-
-        } else {
+        if (livro == null) {
             System.out.println("Livro não encontrado.");
             return null;
         }
+
+        if (livroRepo.existsByTituloIgnoreCase(livro.getTitulo())) {
+            System.out.println("Esse livro já está cadastrado.");
+            return null;
+        }
+
+        System.out.println("""
+      ------- LIVRO -------
+      Título: %s
+      Autor: %s
+      Idioma: %s
+      Downloads: %d
+      ---------------------
+    """.formatted(
+                livro.getTitulo(),
+                livro.getAutor().getNome(),
+                livro.getIdioma(),
+                livro.getDownloads()
+        ));
+
+        Autor autorExistente = autorRepo.findByNomeIgnoreCase(livro.getAutor().getNome());
+        if (autorExistente == null) {
+            autorExistente = autorRepo.save(livro.getAutor());
+        }
+
+        Livro livroSalvar = new Livro(
+                livro.getTitulo(),
+                autorExistente,
+                livro.getIdioma(),
+                livro.getDownloads()
+        );
+
+        livroRepo.save(livroSalvar);
+        System.out.println("Livro salvo com sucesso.");
+
+        return livroSalvar;
     }
+
 
     public void listarLivros() {
         var livros = livroRepo.findAll();
@@ -195,7 +201,7 @@ public class BibliotecaService {
         }
     }
     public void buscarAutorPorNome() {
-        scanner.nextLine(); // limpa buffer
+        scanner.nextLine();
 
         System.out.print("Digite o nome do autor: ");
         String nome = scanner.nextLine();

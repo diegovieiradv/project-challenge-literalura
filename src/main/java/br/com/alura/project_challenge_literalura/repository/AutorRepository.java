@@ -9,4 +9,6 @@ public interface AutorRepository extends JpaRepository<Autor, Long> {
     Autor findByNome(String nome);
 
     List<Autor> findByNomeContainingIgnoreCase(String nome);
+
+    Autor findByNomeIgnoreCase(String nome);
 }
