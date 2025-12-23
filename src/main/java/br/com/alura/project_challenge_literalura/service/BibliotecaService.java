@@ -6,6 +6,7 @@ import br.com.alura.project_challenge_literalura.repository.AutorRepository;
 import br.com.alura.project_challenge_literalura.repository.LivroRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Scanner;
 
 @Service
@@ -236,4 +237,35 @@ public class BibliotecaService {
         }
         System.out.println("--------------------------");
     }
+
+    public void top10LivrosMaisBaixados() {
+        List<Livro> livros = livroRepo.findTop10ByOrderByDownloadsDesc();
+
+        if (livros.isEmpty()) {
+            System.out.println("Nenhum livro cadastrado.");
+            return;
+        }
+
+        System.out.println("\n--- TOP 10 LIVROS MAIS BAIXADOS ---");
+
+        int posicao = 1;
+        for (Livro livro : livros) {
+            System.out.println("""
+        %dº lugar
+        Título: %s
+        Autor: %s
+        Idioma: %s
+        Downloads: %d
+        -------------------------
+        """.formatted(
+                    posicao,
+                    livro.getTitulo(),
+                    livro.getAutor().getNome(),
+                    livro.getIdioma(),
+                    livro.getDownloads()
+            ));
+            posicao++;
+        }
+    }
 }
+
