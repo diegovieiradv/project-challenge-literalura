@@ -1,0 +1,56 @@
+# LiterAlura 📚
+
+Projeto desenvolvido durante os estudos na **Alura** e no programa **Oracle Next Education (ONE)**.
+
+O objetivo do projeto é praticar **Java**, **Spring Boot**, **JPA**, **consumo de API** e **persistência de dados**, utilizando livros do projeto Gutendex.
+
+---
+
+## 🚀 Funcionalidades
+
+O sistema funciona via **menu no console** e permite:
+
+1. Buscar livro pelo título usando a API Gutendex
+2. Listar livros cadastrados no banco
+3. Listar autores cadastrados
+4. Listar autores vivos em um determinado ano
+5. Listar livros por idioma
+6. Buscar autor pelo nome
+7. Listar os **Top 10 livros mais baixados**
+
+---
+
+## 🛠️ Tecnologias utilizadas
+
+- Java
+- Spring Boot
+- Spring Data JPA
+- Hibernate
+- API Gutendex
+- Banco de dados relacional Postgres
+- Maven
+
+---
+
+## 🎯 Objetivo do projeto
+
+Este projeto tem foco **educacional**, com o objetivo de:
+- Praticar orientação a objetos
+- Trabalhar com repositórios e entidades
+- Consumir APIs externas
+- Persistir dados em banco
+- Estruturar um projeto Java com Spring Boot
+
+---
+
+## 📌 Observações
+
+Projeto em desenvolvimento e aprendizado.
+Implementações feitas de forma simples para melhor compreensão dos conceitos.
+
+---
+
+## 👨‍💻 Autor
+
+Projeto desenvolvido por **Diego**
+Durante os estudos na **Alura / Oracle ONE**
